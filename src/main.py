@@ -1,7 +1,10 @@
 from voice import Voice
 
-carti1 = Voice('./carti')
-carti2 = Voice('./carti')
-for x in range(2):
-    carti1.talk()
-    carti2.talk()
+carti = Voice('./carti')
+bowie = Voice('./bowie')
+carti.set_peer(bowie)
+bowie.set_peer(carti)
+
+for x in range(10):
+    carti.talk()
+    bowie.talk()
