@@ -1,4 +1,5 @@
-import os, random
+import os, random, time
+from audioplayer import AudioPlayer
 
 class Voice:
 
@@ -13,7 +14,7 @@ class Voice:
     def intro(self):
         print('INTRO (' + self.directory + ')')
         self.play('intro')
-        while (self.chance(33)):
+        while (self.chance(25)):
             self.play('intro')
 
     def meat(self):
@@ -30,9 +31,16 @@ class Voice:
         while (self.chance(12)):
             self.play('punc')
 
+    def interject(self):
+        print('INTERJECT (' + self.directory + ')')
+        self.play('interject')
+
     def play(self, subdirectory):
-        snippet = random.choice(os.listdir(self.directory + '/' + subdirectory))
+        target = self.directory + '/' + subdirectory
+        snippet = random.choice(os.listdir(target))
         print(' ' + subdirectory + ': ' + str(snippet))
+        AudioPlayer(target + '/' + snippet).play(block=True)
+        while (self.chance(75)): time.sleep(.2)
 
     def chance(self, odds):
         roll = random.randint(1,101)

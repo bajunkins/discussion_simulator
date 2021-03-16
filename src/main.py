@@ -1,6 +1,7 @@
 from voice import Voice
 
-carti = Voice('./carti')
-
-for x in range(1):
-    carti.talk()
+carti1 = Voice('./carti')
+carti2 = Voice('./carti')
+for x in range(2):
+    carti1.talk()
+    carti2.talk()
