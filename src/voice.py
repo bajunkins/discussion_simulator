@@ -8,6 +8,7 @@ class Voice:
 
     def set_peer(self, peer):
         self.peer = peer
+        peer.peer = self
 
     def talk(self):
         self.intro()
@@ -36,6 +37,7 @@ class Voice:
             self.play('punc')
 
     def interject(self):
+        if (not self.peer): pass
         print('INTERJECT (' + self.peer.directory + ')')
         self.peer.play('interject')
 
